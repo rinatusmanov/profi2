@@ -16,3 +16,12 @@ where count_of_works >= 6;
 select * from employees where employee_id not in (
 	select employee_id from order_gantts where order_gantt_from_date > '2021-03-14 00:00:00' and order_gantt_to_date < '2021-03-14 23:59:59'
 );
+
+
+select * from employees where employee_id not in (
+	select employee_id from order_gantts where order_gantt_from_date > '2021-03-14 00:00:00' and order_gantt_to_date < '2021-03-14 23:59:59'
+) and employee_id in (
+	select employee_employee_id from employee_works where work_type_work_id in (
+		select work_type_work_id from order_works
+	)
+);
