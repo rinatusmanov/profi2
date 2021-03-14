@@ -10,4 +10,9 @@ select work_work_id from (
 	)
 	group by work_work_id
 ) as count_of_works_query
-where count_of_works >= 6
+where count_of_works >= 6;
+
+
+select * from employees where employee_id not in (
+	select employee_id from order_gantts where order_gantt_from_date > '2021-03-14 00:00:00' and order_gantt_to_date < '2021-03-14 23:59:59'
+);
